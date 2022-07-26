@@ -370,23 +370,7 @@ private:
 
 class Kunde
 {
-    static int kundenCount;
-    int x, y;
-    cout << "Enter x: ";
-    cin >> x;
-    cout << "Enter y: ";
-    cin >> y;
-    try
-    {
-        if (y == 0)
-            throw "Divide by zero error!";
-        else
-            cout << x / y << endl;
-    }
-    catch (const char *e)
-    {
-        cerr << e << endl;        // log error
-    }                             // trackt, wie viele es gibt
+    static int kundenCount;       // trackt, wie viele es gibt
     static int freieKundenNummer; // trackt, welche noch nicht benutzt wurden
     const int kundenNummer;       // nummer, die objekt zugewiesen wird
 public:
@@ -456,6 +440,11 @@ private:
 };
 
 // cpp
+
+Ablage::Ablage()
+{
+        oben = nullptr;
+}
 void Ablage::drauflegen(int x)
 {
     // erzeuge neues Element
@@ -501,7 +490,7 @@ int Element::getInfo()
 // ----- helpers -----
 
 // casting to other datatypes
-int x = static_cast<int>(y);
+int x = static_cast<int>(y); //very useful
 
 int tryCatchErrors()
 {
@@ -520,6 +509,23 @@ int tryCatchErrors()
     return 0;
 }
 
+//simple example
+    int x, y;
+    cout << "Enter x: ";
+    cin >> x;
+    cout << "Enter y: ";
+    cin >> y;
+    try
+    {
+        if (y == 0)
+            throw "Divide by zero error!";
+        else
+            cout << x / y << endl;
+    }
+    catch (const char *e)
+    {
+        cerr << e << endl;        // log error
+    } 
 //standard library exception object helpers (thx SO)
 #include <stdexcept>
 
@@ -530,3 +536,7 @@ int compare(int a, int b)
         throw std::invalid_argument("received negative value");
     }
 }
+
+// --- string functions ---
+string::at(i) //char at index i
+string::find(str,startingPos);
