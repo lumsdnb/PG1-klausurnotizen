@@ -1,3 +1,8 @@
+// --- string functions ---
+string::at(i) //char at index i
+string::find(str,startingPos);
+
+
 // dreistellige zahl in einzelteile zerlegen
 
 #include <iostream>
@@ -492,51 +497,24 @@ int Element::getInfo()
 // casting to other datatypes
 int x = static_cast<int>(y); //very useful
 
-int tryCatchErrors()
-{
-    try
-    {
-        throw 10;
-    }
-    catch (char *excp)
-    {
-        cout << "Caught " << excp;
-    }
-    catch (...) //
+
+// -- error checking --
+// Programmcode kritischer Bereich
+try {
+    if (FehlerAufgetreten)
+        throw "Info";
+        // weiterer Programmcode ...
+    if (andererFehler)
+        throw "andere Info";
+        // weiterer Programmcode ...
+}
+// Programmcode Fehlerbehandlung
+catch (const char* Text) {
+    // Fehlermeldung
+    cout << Text << endl;
+    // ggf. Reparaturarbeiten
+}
+catch (...) //
     {
         cout << "Default Exception\n";
     }
-    return 0;
-}
-
-//simple example
-    int x, y;
-    cout << "Enter x: ";
-    cin >> x;
-    cout << "Enter y: ";
-    cin >> y;
-    try
-    {
-        if (y == 0)
-            throw "Divide by zero error!";
-        else
-            cout << x / y << endl;
-    }
-    catch (const char *e)
-    {
-        cerr << e << endl;        // log error
-    } 
-//standard library exception object helpers (thx SO)
-#include <stdexcept>
-
-int compare(int a, int b)
-{
-    if (a < 0 || b < 0)
-    {
-        throw std::invalid_argument("received negative value");
-    }
-}
-
-// --- string functions ---
-string::at(i) //char at index i
-string::find(str,startingPos);
